@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="../lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="../lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="StyleSheet.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Poppins';
+            font-size: 22px;
+        }
+
+        #map {
+            height: 450px;
+            width: 410px;
+            border-radius: 5px;
+            margin-bottom: 50px;
+            margin-left: 45px;
+            margin-top: 70px;
+            position: relative
+        }
+    </style>
+<link href="../lib/Leaflet/leaflet.css" rel="stylesheet" />
+    <script src="../lib/Leaflet/leaflet-src.esm.js"></script>
+    <script src="../lib/Leaflet/leaflet-src.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin=""></script>
+
+</head>
+<body>
+    <div class="align-content-center col-4 col-sm-12 back" style="width: 500px; height: 850px; position: relative; ">
+        <div>
+            <div style="margin-left:0px;padding-left:0em;left:0">
+                <img src="Canto.png" style="width:180px; position:relative" />
+
+            </div>
+            <div style="font-size:35px;margin-left:80px"><strong> Local de recolha</strong></div>
+        </div>
+
+        <div style="margin-left: 0px; margin-top: 150px; margin-bottom: 0px; position:absolute; bottom:0;padding-left:0px">
+            <img src="Background2.png" style="width:470px" />
+        </div>
+        <div id="map" class="justify-content-center" style="margin-left:45px;margin-top:100px;position: relative">
+           
+        </div>
+        <div class="align-content-center" style="margin-top:40px; margin-left:210px;position:relative">
+            <a href="map2.html" class="btn btn4">Seguinte</a>
+        </div>
+
+
+
+    </div>
+    <script>
+        var map = L.map('map').setView([40.63332909632132, -8.659493281338111], 15);
+
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        var marker;
+        map.on('click', function (e) {
+            if (marker)
+                map.removeLayer(marker);
+            console.log(e.latlng); // e is an event object (MouseEvent in this case)
+            marker = L.marker(e.latlng).addTo(map);
+        });
+    </script>
+
+</body>
+</html>
